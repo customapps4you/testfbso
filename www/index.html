@@ -15,7 +15,14 @@
 		<button onclick="logout()">Logout</button>
 		<button onclick="facebookWallPost()">facebookWallPost</button>
 		<button onclick="publishStoryFriend()">friendstory</button>
+		<button onclick="showProfileInfo()">Show Profile Info</button>
                 
+		<div id="pfinfo">Profile info:
+			<ul id="pfinfotable">
+				<li>Test...</li>
+			</ul>
+		</div>		
+				
         <div id="data">loading ...</div>
         
         <div id="fb-root"></div>
@@ -97,7 +104,7 @@
                          alert('not logged in');
                          }
                          },
-                         { scope: "email" }
+                         { scope: "email,user_checkins" }
                          );
             }
 			
@@ -138,6 +145,14 @@
 			    }
 			}
             
+			function showProfileInfo(){
+				FB.api('/me', function(response) {
+					document.getElementById('pfinfotable').innerHTML = '<li>Name: '+response.id+'</li>'
+						+'<li>Name: '+response.name+'</li>'
+						+'<li>Name: '+response.email+'</li>';
+				});
+			}
+			
             document.addEventListener('deviceready', function() {
                                       try {
                                       alert('Device is ready! Make sure you set your app_id below this alert.');
