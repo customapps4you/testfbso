@@ -5,7 +5,7 @@
 	    id = "br.com.customapps4you.testfbso"
         versionCode="1" 
 	>
-    <name>Test Json</name>
+    <name>Test FB Sign On</name>
 
     <description>
         Test Facebook Sign On.
