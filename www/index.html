@@ -133,6 +133,7 @@
 			function checkinPost() {
 			    console.log('Debug Checkin');
 				var params = {
+					method: 'feed',
 				    place: '100000212084269'
 				  };
 			    FB.ui(params, function(obj) { document.getElementById('loginput').value=obj;});
