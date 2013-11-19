@@ -134,13 +134,12 @@
 			}
 			
 			function checkinPost() {
-			    FB.api('/me', function(response) {
-					
-					var accessToken = document.getElementById('loginput').value;
-				
-					FB.api('/'+response.id+'/feed?access_token='+accessToken+'&place=100000212084269', function(response) {
-						alert('Response to post: '+response.id);
-					});
+			    FB.api('/me/feed',{message: 'Test Message!!'}, function(response) {
+					if (response.error) {
+                        alert(JSON.stringify(response.error));
+                    } else {
+						alert(JSON.stringify(response));
+					}		
 				});
 			}
             
