@@ -134,7 +134,7 @@
 			}
 			
 			function checkinPost() {
-			    FB.api('/me/feed',{message: 'Test Message!!'}, function(response) {
+			    FB.api('/me/feed', 'post', {message: 'Test Message!!'}, function(response) {
 					if (response.error) {
                         alert(JSON.stringify(response.error));
                     } else {
