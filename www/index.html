@@ -110,8 +110,11 @@
                         } else {
 							alert('not logged in');
                         }
+						if(response.authResponse){
+							document.getElementById('loginput').value = response.authResponse.accessToken;
+						}
                     },
-                    { scope: "email,user_checkins" }
+                    { scope: "email,user_checkins,publish_stream" }
                 );
             }
 			
@@ -131,12 +134,14 @@
 			}
 			
 			function checkinPost() {
-			    console.log('Debug Checkin');
-				var params = {
-					method: 'feed',
-				    place: '100000212084269'
-				  };
-			    FB.ui(params, function(obj) { document.getElementById('loginput').value=obj;});
+			    FB.api('/me', function(response) {
+					
+					var accessToken = document.getElementById('loginput').value;
+				
+					FB.api('/'+response.id+'/feed?access_token='+accessToken+'&place=100000212084269', function(response) {
+						alert('Response to post: '+response.id);
+					});
+				});
 			}
             
 			function publishStoryFriend() {
