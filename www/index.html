@@ -16,12 +16,17 @@
 		<button onclick="facebookWallPost()">facebookWallPost</button>
 		<button onclick="publishStoryFriend()">friendstory</button>
 		<button onclick="showProfileInfo()">Show Profile Info</button>
+		<button onclick="checkinPost()">Checkin Post</button>
                 
 		<div id="pfinfo">Profile info:
 			<ul id="pfinfotable">
 				<li>Test...</li>
 			</ul>
 		</div>		
+		
+		<div id="logdiv">
+			<input id="loginput" value="waiting..."/>
+		</div>
 				
         <div id="data">loading ...</div>
         
@@ -99,15 +104,15 @@
             
             function login() {
                 FB.login(
-                         function(response) {
-                         if (response.session) {
-                         alert('logged in');
-                         } else {
-                         alert('not logged in');
-                         }
-                         },
-                         { scope: "email,user_checkins" }
-                         );
+					function(response) {
+						if (response.session) {
+							alert('logged in');
+                        } else {
+							alert('not logged in');
+                        }
+                    },
+                    { scope: "email,user_checkins" }
+                );
             }
 			
 			
@@ -123,6 +128,14 @@
 				  };
 				console.log(params);
 			    FB.ui(params, function(obj) { console.log(obj);});
+			}
+			
+			function checkinPost() {
+			    console.log('Debug Checkin');
+				var params = {
+				    place: '100000212084269'
+				  };
+			    FB.ui(params, function(obj) { document.getElementById('loginput').value=obj;});
 			}
             
 			function publishStoryFriend() {
