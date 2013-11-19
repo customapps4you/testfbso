@@ -27,6 +27,10 @@
 		<div id="logdiv">
 			<input id="loginput" value="waiting..."/>
 		</div>
+		
+		<div id="placediv">
+			<input id="placeinput" value="195910337104098"/>
+		</div>
 				
         <div id="data">loading ...</div>
         
@@ -134,7 +138,7 @@
 			}
 			
 			function checkinPost() {
-			    FB.api('/me/feed', 'post', {message: 'Test Message!!', place: '100000212084269'}, function(response) {
+			    FB.api('/me/feed', 'post', {message: 'Test Message!!', place: document.getElementById('placeinput').value}, function(response) {
 					if (response.error) {
                         alert(JSON.stringify(response.error));
                     } else {
