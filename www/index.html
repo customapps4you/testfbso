@@ -91,6 +91,8 @@
             
             function logout() {
                 FB.logout(function(response) {
+						  // Hack to effectively log out
+						  FB.Auth.setAuthResponse(null, 'unknown');	
                           alert('logged out');
                           });
             }
